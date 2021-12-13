@@ -5,6 +5,7 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/fuadsuleyman/netproject/internal/handlers"
+	"github.com/fuadsuleyman/netproject/pkg/logging"
 )
 
 const (
@@ -14,16 +15,16 @@ const (
 
 // handler is local with lower case
 type handler struct {
-
+	logger logging.Logger
 } 
 
 // return interface
-func NewHandler() handlers.Handler {
-	return &handler{}
+func NewHandler(logger logging.Logger) handlers.Handler {
+	return &handler{logger: logger}
 }
 
 func (h *handler) Register(router *httprouter.Router){
-	router.GET(usersURL, h.GetList)
+	router.HandlerFunc(http.MethodGet, usersURL, h.GetList)
 	router.GET(userURL, h.GetUserByUUID)
 	router.POST(usersURL, h.CreateUser)
 	router.PUT(userURL, h.UpdateUser)
@@ -32,7 +33,7 @@ func (h *handler) Register(router *httprouter.Router){
 }
 
 // get all users
-func (h *handler) GetList(w http.ResponseWriter, r *http.Request, params httprouter.Params){
+func (h *handler) GetList(w http.ResponseWriter, r *http.Request){
 	w.WriteHeader(200)
 	w.Write([]byte("This is list of users"))
 }
