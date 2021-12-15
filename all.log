@@ -1,0 +1,6 @@
+time="2021-12-15T19:13:44+04:00" level=info msg="create router" func="main.main()" file="app.go:21"
+time="2021-12-15T19:13:44+04:00" level=info msg="read application configuration" func="github.com/fuadsuleyman/netproject/internal/config.GetConfig.func1()" file="config.go:25"
+time="2021-12-15T19:13:45+04:00" level=info msg="register user handler" func="main.main()" file="app.go:26"
+time="2021-12-15T19:13:45+04:00" level=info msg="start application" func="main.start()" file="app.go:36"
+time="2021-12-15T19:13:45+04:00" level=info msg="listen tcp" func="main.start()" file="app.go:53"
+time="2021-12-15T19:13:45+04:00" level=info msg="server is listening port 0.0.0.0:10000" func="main.start()" file="app.go:67"
